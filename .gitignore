@@ -9,3 +9,7 @@ x64
 
 Original/*       
 !/Original*/*.zip 
+
+
+*/Original/*       
+!/Original/*.zip 
