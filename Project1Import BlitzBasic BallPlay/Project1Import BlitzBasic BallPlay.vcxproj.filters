@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Mine">
+      <UniqueIdentifier>{9cab9763-04f2-4a39-b70d-d65c4928e283}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Units">
+      <UniqueIdentifier>{cb37110c-41b5-43af-a471-bc3894d32902}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\JCR6">
+      <UniqueIdentifier>{eda02b5a-577d-4d4c-80d8-97ede5be2785}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SuperTed">
+      <UniqueIdentifier>{78e76cc0-abb9-45db-b4d1-a9ce27046444}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SuperTed">
+      <UniqueIdentifier>{ea8ed9a7-e252-41bd-84b3-f61ea5ad729c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Import BlitzBasic BallPlay.cpp">
+      <Filter>Source Files\Mine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\TrickyUnits\Source\QuickStream.cpp">
+      <Filter>Source Files\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\TrickyUnits\Source\QuickString.cpp">
+      <Filter>Source Files\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\TrickyUnits\Source\TrickySTOI.cpp">
+      <Filter>Source Files\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\TrickyUnits\Source\GINIE.cpp">
+      <Filter>Source Files\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\JCR6\src\jcr6_core.cpp">
+      <Filter>Source Files\JCR6</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SuperTed\C++ Class\source\SuperTed_Core.cpp">
+      <Filter>Source Files\SuperTed</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SuperTed\C++ Class\source\SuperTed_Save.cpp">
+      <Filter>Source Files\SuperTed</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\SuperTed\C++ Class\headers\SuperTed_Core.hpp">
+      <Filter>Header Files\SuperTed</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\SuperTed\C++ Class\headers\SuperTed_Save.hpp">
+      <Filter>Header Files\SuperTed</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
