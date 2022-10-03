@@ -379,55 +379,55 @@ void Tools(JT_Create* Out) {
 		j.second->Tex(EmberExit)->b = 0;
 
 		// Lasers
-		j.second->Tex(LaserRedNorth)->TexFile = "Packages/BallPlayCupid/Lasers/North.png";
+		j.second->Tex(LaserRedNorth)->TexFile = "Packages/BallPlay Cupid/Lasers/North.png";
 		j.second->Tex(LaserRedNorth)->g = 0;
 		j.second->Tex(LaserRedNorth)->b = 0;
-		j.second->Tex(LaserRedSouth)->TexFile = "Packages/BallPlayCupid/Lasers/South.png";
+		j.second->Tex(LaserRedSouth)->TexFile = "Packages/BallPlay Cupid/Lasers/South.png";
 		j.second->Tex(LaserRedSouth)->g = 0;
 		j.second->Tex(LaserRedSouth)->b = 0;
-		j.second->Tex(LaserRedWest)->TexFile = "Packages/BallPlayCupid/Lasers/West.png";
+		j.second->Tex(LaserRedWest)->TexFile = "Packages/BallPlay Cupid/Lasers/West.png";
 		j.second->Tex(LaserRedWest)->g = 0;
 		j.second->Tex(LaserRedWest)->b = 0;
-		j.second->Tex(LaserRedEast)->TexFile = "Packages/BallPlayCupid/Lasers/East.png";
+		j.second->Tex(LaserRedEast)->TexFile = "Packages/BallPlay Cupid/Lasers/East.png";
 		j.second->Tex(LaserRedEast)->g = 0;
 		j.second->Tex(LaserRedEast)->b = 0;
 
-		j.second->Tex(LaserBlueNorth)->TexFile = "Packages/BallPlayCupid/Lasers/North.png";
+		j.second->Tex(LaserBlueNorth)->TexFile = "Packages/BallPlay Cupid/Lasers/North.png";
 		j.second->Tex(LaserBlueNorth)->g = 0;
 		j.second->Tex(LaserBlueNorth)->r = 0;
-		j.second->Tex(LaserBlueSouth)->TexFile = "Packages/BallPlayCupid/Lasers/South.png";
+		j.second->Tex(LaserBlueSouth)->TexFile = "Packages/BallPlay Cupid/Lasers/South.png";
 		j.second->Tex(LaserBlueSouth)->g = 0;
 		j.second->Tex(LaserBlueSouth)->r = 0;
-		j.second->Tex(LaserBlueWest)->TexFile = "Packages/BallPlayCupid/Lasers/West.png";
+		j.second->Tex(LaserBlueWest)->TexFile = "Packages/BallPlay Cupid/Lasers/West.png";
 		j.second->Tex(LaserBlueWest)->g = 0;
 		j.second->Tex(LaserBlueWest)->r = 0;
-		j.second->Tex(LaserBlueEast)->TexFile = "Packages/BallPlayCupid/Lasers/East.png";
+		j.second->Tex(LaserBlueEast)->TexFile = "Packages/BallPlay Cupid/Lasers/East.png";
 		j.second->Tex(LaserBlueEast)->g = 0;
 		j.second->Tex(LaserBlueEast)->r = 0;
 
-		j.second->Tex(LaserEmberNorth)->TexFile = "Packages/BallPlayCupid/Lasers/North.png";
+		j.second->Tex(LaserEmberNorth)->TexFile = "Packages/BallPlay Cupid/Lasers/North.png";
 		j.second->Tex(LaserEmberNorth)->g = 0xb4;
 		j.second->Tex(LaserEmberNorth)->b = 0x00;
-		j.second->Tex(LaserEmberSouth)->TexFile = "Packages/BallPlayCupid/Lasers/South.png";
+		j.second->Tex(LaserEmberSouth)->TexFile = "Packages/BallPlay Cupid/Lasers/South.png";
 		j.second->Tex(LaserEmberSouth)->g = 0xb4;
 		j.second->Tex(LaserEmberSouth)->b = 0x00;
-		j.second->Tex(LaserEmberWest)->TexFile = "Packages/BallPlayCupid/Lasers/West.png";
+		j.second->Tex(LaserEmberWest)->TexFile = "Packages/BallPlay Cupid/Lasers/West.png";
 		j.second->Tex(LaserEmberWest)->g = 0xb4;
 		j.second->Tex(LaserEmberWest)->b = 0x00;
-		j.second->Tex(LaserEmberEast)->TexFile = "Packages/BallPlayCupid/Lasers/East.png";
+		j.second->Tex(LaserEmberEast)->TexFile = "Packages/BallPla Cupid/Lasers/East.png";
 		j.second->Tex(LaserEmberEast)->g = 0xb4;
 		j.second->Tex(LaserEmberEast)->b = 0x00;
 
-		j.second->Tex(LaserGreenNorth)->TexFile = "Packages/BallPlayCupid/Lasers/North.png";
+		j.second->Tex(LaserGreenNorth)->TexFile = "Packages/BallPlay Cupid/Lasers/North.png";
 		j.second->Tex(LaserGreenNorth)->b = 0;
 		j.second->Tex(LaserGreenNorth)->r = 0;
-		j.second->Tex(LaserGreenSouth)->TexFile = "Packages/BallPlayCupid/Lasers/South.png";
+		j.second->Tex(LaserGreenSouth)->TexFile = "Packages/BallPlay Cupid/Lasers/South.png";
 		j.second->Tex(LaserGreenSouth)->b = 0;
 		j.second->Tex(LaserGreenSouth)->r = 0;
-		j.second->Tex(LaserGreenWest)->TexFile = "Packages/BallPlayCupid/Lasers/West.png";
+		j.second->Tex(LaserGreenWest)->TexFile = "Packages/BallPlay Cupid/Lasers/West.png";
 		j.second->Tex(LaserGreenWest)->b = 0;
 		j.second->Tex(LaserGreenWest)->r = 0;
-		j.second->Tex(LaserGreenEast)->TexFile = "Packages/BallPlayCupid/Lasers/East.png";
+		j.second->Tex(LaserGreenEast)->TexFile = "Packages/BallPlay Cupid/Lasers/East.png";
 		j.second->Tex(LaserGreenEast)->b = 0;
 		j.second->Tex(LaserGreenEast)->r = 0;
 
