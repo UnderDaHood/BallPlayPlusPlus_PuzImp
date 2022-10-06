@@ -288,12 +288,114 @@ int LA_Object(lua_State* L) {
 	auto
 		o{ MapMap[pnum]->Rooms["PUZZLE"]->AddObject(xpos,ypos,type) };
 	o->kind = type;
-	o->Data["R"] = to_string(rcol);
-	o->Data["G"] = to_string(gcol);
-	o->Data["B"] = to_string(bcol);
+	o->Data["Red"] = to_string(rcol);
+	o->Data["Green"] = to_string(gcol);
+	o->Data["Blue"] = to_string(bcol);
 	o->Data["Alpha"] = to_string(alph);
 	o->Data["Direction"] = sdir;
-	cout << "Object (" << type << ") created at (" << xpos << "," << ypos << ") -> " << sdir << "\n";
+	cout << "Object (" << type << ") created at (" << xpos << "," << ypos << ") -> " << sdir << " (Color #";
+	printf("%02x%02x%02x", rcol, gcol, bcol);
+	cout << "; Alpha: " << alph << endl;
+	return 0;
+}
+
+int LA_Laser(lua_State* L) {
+	using namespace BallPlay;
+	auto
+		p{ luaL_checkinteger(L,1) },
+		x{ luaL_checkinteger(L,2) },
+		y{ luaL_checkinteger(L,3) },
+		T{ luaL_checkinteger(L,4) };
+
+	//auto
+	//	D{ luaL_checkstring(L,5) },
+	//	C{ luaL_checkstring(L,6) };
+	auto
+		R{ MapMap[p]->Rooms["PUZZLE"] };
+	auto
+		o{ R->AddObject(x,y,T) };
+	byte r{ 0 }, g{ 0 }, b{ 0 };
+	string dir{ "South" };
+	switch (T) {
+
+		// Red
+	case LaserRedNorth:
+		r = 255; g = 0; b = 0;
+		dir = "North";
+		break;
+	case LaserRedSouth:
+		r = 255; g = 0; b = 0;
+		dir = "South";
+	case LaserRedEast:
+		r = 255; g = 0; b = 0;
+		dir = "East";
+		break;
+	case LaserRedWest:
+		r = 255; g = 0; b = 0;
+		dir = "West";
+		break;
+
+		// Ember
+	case LaserEmberNorth:
+		r = 255; g = 180; b = 0;
+		dir = "North";
+		break;
+	case LaserEmberSouth:
+		r = 255; g = 180; b = 0;
+		dir = "South";
+	case LaserEmberEast:
+		r = 255; g = 180; b = 0;
+		dir = "East";
+		break;
+	case LaserEmberWest:
+		r = 255; g = 180; b = 0;
+		dir = "West";
+		break;
+
+		// Green
+	case LaserGreenNorth:
+		r = 0; g = 255; b = 0;
+		dir = "North";
+		break;
+	case LaserGreenSouth:
+		r = 0; g = 255; b = 0;
+		dir = "South";
+	case LaserGreenEast:
+		r = 0; g = 255; b = 0;
+		dir = "East";
+		break;
+	case LaserGreenWest:
+		r = 0; g = 255; b = 0;
+		dir = "West";
+		break;
+
+		// Blue
+	case LaserBlueNorth:
+		r = 0; g = 0; b = 0xff;
+		dir = "North";
+		break;
+	case LaserBlueSouth:
+		r = 0; g = 0; b = 0xff;
+		dir = "South";
+	case LaserBlueEast:
+		r = 0; g = 0; b = 0xff;
+		dir = "East";
+		break;
+	case LaserBlueWest:
+		r = 0; g = 0; b = 0xff;
+		dir = "West";
+		break;
+	default:
+		Error("Unknown laser type!");
+		break;
+
+	}
+	o->Data["Red"] = to_string(r);
+	o->Data["Green"] = to_string(g);
+	o->Data["Blue"] = to_string(b);
+	o->Data["Direction"] = dir;
+	R->LayVal("WALL", x, y, T);
+	R->LayVal("DIRECTIONS", x, y, T); // Prevents placing plates and stuff on the lasers.
 	return 0;
 }
 #pragma endregion
@@ -431,6 +533,31 @@ void Tools(JT_Create* Out) {
 		j.second->Tex(LaserGreenEast)->b = 0;
 		j.second->Tex(LaserGreenEast)->r = 0;
 
+		j.second->Tex(LaserPlateBlue)->TexFile = "Packages/BallPlay Cupid/Textures/pz_obstacles_laserplate.png";
+		j.second->Tex(LaserPlateBlue)->r = 0;
+		j.second->Tex(LaserPlateBlue)->g = 0;
+		j.second->Tex(LaserPlateBlue)->b = 255;
+
+		j.second->Tex(LaserPlateRed)->TexFile = "Packages/BallPlay Cupid/Textures/pz_obstacles_laserplate.png";
+		j.second->Tex(LaserPlateRed)->r = 255;
+		j.second->Tex(LaserPlateRed)->g = 0;
+		j.second->Tex(LaserPlateRed)->b = 0;
+
+		j.second->Tex(LaserPlateGreen)->TexFile = "Packages/BallPlay Cupid/Textures/pz_obstacles_laserplate.png";
+		j.second->Tex(LaserPlateGreen)->r = 0;
+		j.second->Tex(LaserPlateGreen)->g = 255;
+		j.second->Tex(LaserPlateGreen)->b = 0;
+
+		j.second->Tex(LaserPlateEmber)->TexFile = "Packages/BallPlay Cupid/Textures/pz_obstacles_laserplate.png";
+		j.second->Tex(LaserPlateEmber)->r = 255;
+		j.second->Tex(LaserPlateEmber)->g = 180;
+		j.second->Tex(LaserPlateEmber)->b = 0;
+
+		// Arrows
+
+
+
+
 		j.second->Tex(dot)->TexFile = "PACKAGES/BALLPLAY CUPID/TEXTURES/pz_obstacles_dot";
 
 	}
@@ -476,6 +603,7 @@ int main(int cnt, char** args) {
 	lua_register(LS, "NonFatal", LA_NonFatal);
 	lua_register(LS, "Object", LA_Object);
 	lua_register(LS, "BreakBlock", LA_BreakBlock);
+	lua_register(LS, "Laser", LA_Laser);
 	luaL_loadstring(LS, "BPC_Test()"); lua_call(LS, 0, 0);
 	if (!Script(ExtractDir(args[0]) + "/Import BallPlay Cupid.lua")) return 0;
 	cout << "Creating: " << TarDir + "BallPlay Cupid" << endl;
@@ -517,6 +645,7 @@ int main(int cnt, char** args) {
 	PID.Value("Copyright", "Copyright", "(c) Jeroen P. Broks 2016");
 	Out.AddString("Meta.ini", PID.UnParse());
 	Out.Close();
+	lua_close(LS);
 	Error("", false, true);
 	return 0;
 }

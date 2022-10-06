@@ -91,7 +91,12 @@ local DirTypes = {
 			LaserGreenNorth = 0xfffc,
 			LaserGreenSouth = 0xfffd,
 			LaserGreenWest = 0xfffe,
-			LaserGreenEast = 0xffff
+			LaserGreenEast = 0xffff,
+
+			LaserPlateRed = 0xfef0,
+			LaserPlateBlue = 0xfef4,
+			LaserPlateEmber = 0xfef8,
+			LaserPlateGreen = 0xfefc
 
 		}
 
@@ -223,7 +228,16 @@ function Convert(lvnum)
 					TexLayModify(lvnum,"GLASS",x,y,"pz_objects_glass")
 					DirLayModify(lvnum,x,y,DirTypes.nobuild)
 				elseif Prefixed(obst,"platelaser_") then
-					NonFatal("Laser plates not yet been implemented")
+					--NonFatal("Laser plates not yet been implemented ("..obst..")")
+					local delnum = #("platelaser_")
+					local pcol=Right(obst,#obst-delnum)
+					local col = Left(pcol,1):upper()..Right(pcol,#pcol-1):lower()
+					printf("Laser Plate (%2d,%2d): %s",x,y,col)
+					DirLayModify(lvnum,x,y,DirTypes["LaserPlate"..col])
+				elseif Prefixed(obst,"laser") then
+					print(obst)
+					Laser(lvnum,x,y,DirTypes[DConv[obst]])
+					--NonFatal(sprintf("Laser not yet fully supported (%02d,%02d)",x,y))
 				else
 					assert(DConv[obst],sprintf("No proper replacement known for obstacle '%s' at (%02d,%02d)",obst,x,y))
 					assert(DirTypes[DConv[obst]],sprintf("Enum error '%s'=>'%s' (%02d,%02d)",obst,DConv[obst],x,y))
@@ -270,16 +284,16 @@ function Convert(lvnum)
 			end,
 
 			ghostamber=function()
-				Object(lvnum,ObjTypes.Ghost,o.x,o.y,255,180,0,127,D2W[o.dir])
+				Object(lvnum,ObjTypes.Ghost,o.x,o.y,255,180,0,180,D2W[o.dir])
 			end,
 			ghostred=function()
-				Object(lvnum,ObjTypes.Ghost,o.x,o.y,255,0,0,127,D2W[o.dir])
+				Object(lvnum,ObjTypes.Ghost,o.x,o.y,255,0,0,180,D2W[o.dir])
 			end,
 			ghostblue=function()
-				Object(lvnum,ObjTypes.Ghost,o.x,o.y,0,180,255,127,D2W[o.dir])
+				Object(lvnum,ObjTypes.Ghost,o.x,o.y,0,180,255,180,D2W[o.dir])
 			end,
 			ghostgreen=function()
-				Object(lvnum,ObjTypes.Ghost,o.x,o.y,0,255,0,127,D2W[o.dir])
+				Object(lvnum,ObjTypes.Ghost,o.x,o.y,0,255,0,180,D2W[o.dir])
 			end,
 			woman=function()
 				Object(lvnum,ObjTypes.Girl,o.x,o.y)
