@@ -554,6 +554,22 @@ void Tools(JT_Create* Out) {
 		j.second->Tex(LaserPlateEmber)->b = 0;
 
 		// Arrows
+		j.second->Tex(arrownorth)->TexFile = "Packages/BallPlay Cupid/Textures/pz_obstacles_arrow_up.png";
+		j.second->Tex(arrownorth)->r = 0;
+		j.second->Tex(arrownorth)->g = 180;
+		j.second->Tex(arrownorth)->b = 255;
+		j.second->Tex(arrowsouth)->TexFile = "Packages/BallPlay Cupid/Textures/pz_obstacles_arrow_down.png";
+		j.second->Tex(arrowsouth)->r = 0;
+		j.second->Tex(arrowsouth)->g = 180;
+		j.second->Tex(arrowsouth)->b = 255;
+		j.second->Tex(arrowwest)->TexFile = "Packages/BallPlay Cupid/Textures/pz_obstacles_arrow_left.png";
+		j.second->Tex(arrowwest)->r = 0;
+		j.second->Tex(arrowwest)->g = 180;
+		j.second->Tex(arrowwest)->b = 255;
+		j.second->Tex(arroweast)->TexFile = "Packages/BallPlay Cupid/Textures/pz_obstacles_arrow_right.png";
+		j.second->Tex(arroweast)->r = 0;
+		j.second->Tex(arroweast)->g = 180;
+		j.second->Tex(arroweast)->b = 255;
 
 
 
