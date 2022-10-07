@@ -21,7 +21,7 @@
 -- Please note that some references to data like pictures or audio, do not automatically
 -- fall under this licenses. Mostly this is noted in the respective files.
 -- 
--- Version: 22.09.28
+-- Version: 22.10.07
 -- </License Block>
 -- Script
 local load=load
