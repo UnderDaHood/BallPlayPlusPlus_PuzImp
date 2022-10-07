@@ -398,6 +398,18 @@ int LA_Laser(lua_State* L) {
 	R->LayVal("DIRECTIONS", x, y, T); // Prevents placing plates and stuff on the lasers.
 	return 0;
 }
+
+int LA_Death(lua_State* L) {
+	auto
+		n{ (int)luaL_checkinteger(L, 1) },
+		x{ (int)luaL_checkinteger(L, 2) },
+		y{ (int)luaL_checkinteger(L, 3) };
+	printf("DEATH %d: (%02d,%02d)\n", n, x, y);
+	//*
+	MapMap[n]->Rooms["PUZZLE"]->Layers["DEATH"]->Field->Value(x, y, 1);
+	//*/
+	return 0;
+}
 #pragma endregion
 
 #pragma region Background_Fractals
@@ -620,6 +632,7 @@ int main(int cnt, char** args) {
 	lua_register(LS, "Object", LA_Object);
 	lua_register(LS, "BreakBlock", LA_BreakBlock);
 	lua_register(LS, "Laser", LA_Laser);
+	lua_register(LS, "Death", LA_Death);
 	luaL_loadstring(LS, "BPC_Test()"); lua_call(LS, 0, 0);
 	if (!Script(ExtractDir(args[0]) + "/Import BallPlay Cupid.lua")) return 0;
 	cout << "Creating: " << TarDir + "BallPlay Cupid" << endl;

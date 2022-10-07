@@ -211,11 +211,12 @@ function Convert(lvnum)
 	if Data.format[1]~=25 or Data.format[2]~=15 then
 		printf("WARNING! Format is not 25x15 but it's %02x%02d in stead'",Data.format[1],Data.format[2])
 	end
-	for y=0,Data.format[2] do
-		for x=0,Data.format[1] do
+	for y=0,Data.format[2]-1 do
+		for x=0,Data.format[1]-1 do
 			for io,it in pairs(TLay) do
 				if Data[io][ArT(x,y)] then TexLayModify(lvnum,it,x,y,Data[io][ArT(x,y)]) end
 			end
+			if not Data.floors[ArT(x,y)]  then Death(lvnum,x,y) end 
 			if Data.obstacles[ArT(x,y)] then
 				local obst=Data.obstacles[ArT(x,y)]
 				if (Left(obst,2)=="bb") then
