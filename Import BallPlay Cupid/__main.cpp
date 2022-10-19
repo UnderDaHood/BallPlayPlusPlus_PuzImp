@@ -21,7 +21,7 @@
 // Please note that some references to data like pictures or audio, do not automatically
 // fall under this licenses. Mostly this is noted in the respective files.
 // 
-// Version: 22.10.07
+// Version: 22.10.19
 // EndLic
 #include <QuickString.hpp>
 #include <QuickInput.hpp>
@@ -188,6 +188,7 @@ int LA_TexLayModify(lua_State* L) {
 	if (TexReg[Tex].index > 65535) Error("Tex number too high: " + to_string(TexReg[Tex].index)); 
 	MapMap[ln]->Rooms["PUZZLE"]->LayVal(Upper(Lay), x, y, TexReg[Tex].index);
 	MapMap[ln]->Tex(TexReg[Tex].index)->TexFile = TexReg[Tex].TarFile;
+	MapMap[ln]->Tex(TexReg[Tex].index)->Type = TeddyTexType::BottomCenter;
 	return 0;
 }
 int LA_DirLayModify(lua_State* L) {
@@ -462,6 +463,7 @@ void Tools(JT_Create* Out) {
 		}
 	}
 	Out->AddFile(OriDir + "Stuff/Tricky Assets CCBYNCSA/GFX/Game/Puzzle/Obstacles/Exit.png","Dir/Exit.png");
+	Out->AddFile(OriDir + "Stuff/OCAL/GFX/Game/Puzzle/Obstacles/Hut.png", "Dir/Hut.png");
 	Out->AddFile(OriDir + "Stuff/Tricky Assets CCBYNCSA/GFX/Game/Puzzle/Obstacles/LaserUp.png", "Lasers/North.png");
 	Out->AddFile(OriDir + "Stuff/Tricky Assets CCBYNCSA/GFX/Game/Puzzle/Obstacles/LaserDown.png", "Lasers/South.png");
 	Out->AddFile(OriDir + "Stuff/Tricky Assets CCBYNCSA/GFX/Game/Puzzle/Obstacles/LaserLeft.png", "Lasers/West.png");
@@ -528,7 +530,7 @@ void Tools(JT_Create* Out) {
 		j.second->Tex(LaserEmberWest)->TexFile = "Packages/BallPlay Cupid/Lasers/West.png";
 		j.second->Tex(LaserEmberWest)->g = 0xb4;
 		j.second->Tex(LaserEmberWest)->b = 0x00;
-		j.second->Tex(LaserEmberEast)->TexFile = "Packages/BallPla Cupid/Lasers/East.png";
+		j.second->Tex(LaserEmberEast)->TexFile = "Packages/BallPlay Cupid/Lasers/East.png";
 		j.second->Tex(LaserEmberEast)->g = 0xb4;
 		j.second->Tex(LaserEmberEast)->b = 0x00;
 
@@ -585,8 +587,8 @@ void Tools(JT_Create* Out) {
 
 
 
-
-		j.second->Tex(dot)->TexFile = "PACKAGES/BALLPLAY CUPID/TEXTURES/pz_obstacles_dot";
+		j.second->Tex(GirlHome)->TexFile = "Packages/BallPlay Cupid/Dir/Hut.png";
+		j.second->Tex(dot)->TexFile = "PACKAGES/BALLPLAY CUPID/TEXTURES/pz_obstacles_dot.png";
 
 	}
 		
@@ -646,6 +648,7 @@ int main(int cnt, char** args) {
 		MapMap[i]->_MaxTiles = TeddyMaxTile::B16;
 		TR->CreateZone("DEATH");
 		TR->CreateZone("TRANS");
+		
 		char cmd[100]; sprintf_s(cmd, "Convert(%d)", i);
 		luaL_loadstring(LS, cmd);
 		lua_call(LS, 0, 0);

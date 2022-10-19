@@ -21,7 +21,7 @@
 -- Please note that some references to data like pictures or audio, do not automatically
 -- fall under this licenses. Mostly this is noted in the respective files.
 -- 
--- Version: 22.10.07
+-- Version: 22.10.19
 -- </License Block>
 -- Script
 local load=load
@@ -71,7 +71,7 @@ local DirTypes = {
 			RedExit = 0x72,
 
 			GirlHome = 2, girlhome = 2,
-			dot=3,Dot=3,
+			--dot=3,Dot=3,
 
 			LaserRedNorth = 0xfff0,
 			LaserRedSouth = 0xfff1,
@@ -217,6 +217,7 @@ function Convert(lvnum)
 				if Data[io][ArT(x,y)] then TexLayModify(lvnum,it,x,y,Data[io][ArT(x,y)]) end
 			end
 			if not Data.floors[ArT(x,y)]  then Death(lvnum,x,y) end 
+			--printf("(%02d,%02d) -> %s\n",x,y,Data.obstacles[ArT(x,y)])
 			if Data.obstacles[ArT(x,y)] then
 				local obst=Data.obstacles[ArT(x,y)]
 				if (Left(obst,2)=="bb") then
@@ -234,11 +235,14 @@ function Convert(lvnum)
 					local pcol=Right(obst,#obst-delnum)
 					local col = Left(pcol,1):upper()..Right(pcol,#pcol-1):lower()
 					printf("Laser Plate (%2d,%2d): %s",x,y,col)
-					DirLayModify(lvnum,x,y,DirTypes["LaserPlate"..col])
+					DirLayModify(lvnum,x,y,DirTypes["LaserPlate"..col])				
 				elseif Prefixed(obst,"laser") then
 					print(obst)
 					Laser(lvnum,x,y,DirTypes[DConv[obst]])
 					--NonFatal(sprintf("Laser not yet fully supported (%02d,%02d)",x,y))
+				elseif obst=="dot" then
+					print("DOT!",x,y,DirTypes.dot)
+					DirLayModify(lvnum,x,y,DirTypes.dot)
 				else
 					assert(DConv[obst],sprintf("No proper replacement known for obstacle '%s' at (%02d,%02d)",obst,x,y))
 					assert(DirTypes[DConv[obst]],sprintf("Enum error '%s'=>'%s' (%02d,%02d)",obst,DConv[obst],x,y))
