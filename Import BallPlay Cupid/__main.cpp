@@ -23,6 +23,7 @@
 // 
 // Version: 22.10.19
 // EndLic
+
 #include <QuickString.hpp>
 #include <QuickInput.hpp>
 #include <QCol.hpp>
@@ -584,8 +585,6 @@ void Tools(JT_Create* Out) {
 		j.second->Tex(arroweast)->r = 0;
 		j.second->Tex(arroweast)->g = 180;
 		j.second->Tex(arroweast)->b = 255;
-
-
 
 		j.second->Tex(GirlHome)->TexFile = "Packages/BallPlay Cupid/Dir/Hut.png";
 		j.second->Tex(dot)->TexFile = "PACKAGES/BALLPLAY CUPID/TEXTURES/pz_obstacles_dot.png";
